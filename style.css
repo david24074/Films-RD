@@ -139,3 +139,71 @@ body {
     color: #363636;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     }
+    /* Algemene stijling */
+body {
+  background-color: #F7EEDD;
+  font-family: Georgia, serif;
+  margin: 0;
+}
+
+header {
+  background-color: #363636;
+  color: #F7EEDD;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+main {
+  margin: 20px;
+}
+
+/* Stijling van het inlogformulier */
+.login-form {
+  background-color: #F2D3A8;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  background-color: #363636;
+  color: #F7EEDD;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #F7EEDD;
+  color: #363636;
+}
