@@ -207,3 +207,152 @@ button:hover {
   background-color: #F7EEDD;
   color: #363636;
 }
+/* Algemene stijling */
+body {
+  background-color: #F7EEDD;
+  font-family: Georgia, serif;
+  margin: 0;
+}
+
+header {
+  background-color: #363636;
+  color: #F7EEDD;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+main {
+  margin: 20px;
+}
+
+/* Stijling van de film lijst */
+.film-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.film-item {
+  margin-bottom: 20px;
+  background-color: #F2D3A8;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.film-item:hover {
+  transform: scale(1.02);
+}
+
+.film-item-image {
+  float: left;
+  margin-right: 20px;
+  width: 150px;
+  height: 225px;
+  overflow: hidden;
+}
+
+.film-item-image img {
+  width: 100%;
+  height: auto;
+}
+
+.film-item-details {
+  overflow: hidden;
+  padding: 10px;
+}
+
+.film-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.film-director, .film-year {
+  margin: 5px 0;
+}
+
+.film-year {
+  font-style: italic;
+}
+
+/* Stijling van de filmpagina */
+.film-page {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #F7EEDD;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.film-page-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.film-page-details {
+  margin-bottom: 20px;
+}
+
+.film-page-image {
+  margin-right: 20px;
+  width: 300px;
+  height: 450px;
+  float: left;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.film-page-image img {
+  width: 100%;
+  height: auto;
+}
+
+.film-page-description {
+  overflow: hidden;
+}
+
+.film-page-description p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Stijling van de filter */
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  margin-right: 10px;
+}
+
+/* Stijling van de zoekbalk */
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  border-radius: 25px;
+  border: none;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.search-button {
+  border-radius: 25px;
+  border: none;
+  background-color: #F2D3A8;
+  color: #363;
+}

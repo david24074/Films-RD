@@ -1,32 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nederlandse films</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Nederlandse films</h1>
-  </header>
 
-  <main>
-    <ul class="film-list">
-      <li class="film-item">
-        <a href="film.html">
-          <div class="film-item-image">
-            <img src="https://via.placeholder.com/150" alt="Film poster">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 1</h5>
+            </a>
           </div>
-          <div class="film-item-details">
-            <h2 class="film-title">Titel van de film</h2>
-            <p class="film-director">Regisseur naam</p>
-            <p class="film-year">Jaar van uitgave</p>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 2</h5>
+            </a>
           </div>
-        </a>
-      </li>
-      <!-- Voeg hier meer films toe -->
-    </ul>
-  </main>
-</body>
-</html>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 3</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 4</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 5</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 6</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 7</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 8</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 9</h5>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <img src="https://via.placeholder.com/150" class="img-fluid rounded mx-auto d-block" alt="..." />
+              <h5 class="text-center mt-2">Film 10</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="container-fluid my-5">
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Filter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="container-fluid my-5">
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Filter
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            "comedy" href="#">Comedy</a>
+            <a class="d-block p-2" href="#">Drama</a>
+            <a class="d-block p-2" href="#">Action</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h3>Film 1</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu
+          velit quis nibh finibus semper. Maecenas euismod, libero id gravida
+          malesuada, libero urna convallis odio, a dapibus velit velit at mauris.
+          Aliquam fringilla est sed elementum bibendum. Ut sed libero finibus,
+          interdum mauris sed, ultricies libero. Donec vel magna ac enim
+          consequat suscipit in vel risus. Proin eleifend erat elit, sed faucibus
+          augue tincidunt non. Sed vulputate, sapien sit amet pulvinar vehicula,
+          libero nibh bibendum dui, vitae suscipit nisl tellus eu enim. Nullam
+          eleifend metus eget sapien vestibulum, vel consequat nisi dignissim.
+          Nam finibus ante id felis congue malesuada. Fusce vel sodales metus.
+        </p>
+        <hr />
+        <h3>Film 2</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu
+          velit quis nibh finibus semper. Maecenas euismod, libero id gravida
+          malesuada, libero urna convallis odio, a dapibus velit velit at mauris.
+          Aliquam fringilla est sed elementum bibendum. Ut sed libero finibus,
+          interdum mauris sed, ultricies libero. Donec vel magna ac enim
+          consequat suscipit in vel risus. Proin eleifend erat elit, sed faucibus
+          augue tincidunt non. Sed vulputate, sapien sit amet pulvinar vehicula,
+          libero nibh bibendum dui, vitae suscipit nisl tellus eu enim. Nullam
+          eleifend metus eget sapien vestibulum, vel consequat nisi dignissim.
+          Nam finibus ante id felis congue malesuada. Fusce vel sodales metus.
+        </p>
+        <hr />
+        <h3>Film 3</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu
+          velit quis nibh finibus semper. Maecenas euismod, libero id gravida
+          malesuada, libero urna convallis odio, a dapibus velit velit at mauris.
+          Aliquam fringilla est sed elementum bibendum. Ut sed libero finibus,
+          interdum mauris sed, ultricies libero. Donec vel magna ac enim
+          consequat suscipit in vel risus. Proin eleifend erat elit, sed faucibus
+          augue tincidunt non. Sed vulputate, sapien sit amet pulvinar vehicula,
+          libero nibh bibendum dui, vitae suscipit nisl tellus eu enim. Nullam
+          eleifend metus eget sapien vestibulum, vel consequat nisi dignissim.
+          Nam finibus ante id felis congue malesuada. Fusce vel sodales metus.
+        </p>
+      </div>
+
+    </div>
+  </div>
