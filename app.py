@@ -1,27 +1,30 @@
-from flask import Flask, render_template
-import sqlite3
-
-app = Flask(__name__)
+from src import app, db
+from flask import render_template, redirect, request, url_for, flash
+from flask_login import login_user, login_required, logout_user, current_user
+from src.models import User
+from src.forms import LoginForm
 
 @app.route('/')
 def index():
-    conn = sqlite3.connect('database.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM users')
-    users = c.fetchall()
-    c.execute('SELECT * FROM movies')
-    movies = c.fetchall()
-    conn.close()
-    return render_template('index.html', users=users, movies=movies)
+    return render_template('index.html', movies=[])
 
-@app.route('/users')
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    conn = sqlite3.connect('database.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM users')
-    users = c.fetchall()
-    conn.close()
-    return render_template('login.html', users=users)
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user.check_password(form.password.data) and user is not None:
+            login_user(user)
+    return render_template('login.html', form=form)
+
+@app.route("/login-old", methods=['GET', 'POST'])
+def login_old():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user.check_password(form.password.data) and user is not None:
+            login_user(user)
+    return render_template('login_old.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)

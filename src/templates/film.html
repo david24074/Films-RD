@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Pagina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Film Titel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Over</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/300x450.png?text=Movie+Poster" alt="Movie Poster" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h1 class="display-4">Film Titel</h1>
+                    <p class="lead">Korte beschrijving van de film.</p>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="h5">Jaar: 2021</p>
+                        <p class="h5">Regisseur: Regisseur Naam</p>
+                        <p class="h5">Acteurs: Acteur Naam, Acteur Naam, Acteur Naam</p>
+                    </div>
+                    <br>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+                    </div>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni molestias labore expedita libero est incidunt, vel quibusdam eum autem quam saepe, possimus iusto quod error debitis vitae? Recusandae, impedit distinctio.</p>
+                    <a href="#" class="btn btn-primary">Aanpassen</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+      <!-- Main Content -->
+      <main class="container my-5">
+
+        <div class="row my-5">
+            <div class="col-md-12">
+                <h2>User Reviews</h2>
+                {% if movie.reviews %}
+                    {% for review in movie.reviews %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ review.user }}</h5>
+                                <p class="card-text">{{ review.comment }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>There are no reviews yet. Be the first to leave one!</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Add a Review</h2>
+                <form method="POST" action="{{ url_for('add_review', movie_id=movie.id) }}">
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
