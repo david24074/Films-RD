@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../static/style.css" />
+</head>
+
+<body>
+  <header class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="mb-0">Nederlandse Films</h1>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Sign In</a>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <a href="" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="intro">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Welkom bij NederFilms</h2>
+            <p>Op NederFilms vind je een overzicht van de beste Nederlandse films. Van klassiekers tot nieuwe releases,
+              wij hebben ze allemaal voor je op een rijtje gezet. Onze website is dé plek voor filmliefhebbers die op
+              zoek zijn naar de beste Nederlandse films.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="mb-4">Top Movies</h2>
+        <div class="row">
+          {% for movie in movies[:3] %}
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/300x450" alt="Movie Poster" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title mb-0">{{ movie[1] }}</h5>
+                <p class="card-text">Director: {{ movie[2] }}</p>
+                <p class="card-text">Year released: {{ movie[3] }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-secondary">
+          <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="searchInput">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" onclick="searchMovies()">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-3" id="movieContainer">
+        <div class="row">
+          {% for movie in movies %}
+          <div class="col-md-4">
+            <div class="movie">
+              <img src="https://via.placeholder.com/150x225" alt="Movie poster">
+              <h4 class="title">{{ movie[1] }}</h4>
+              <p>Year: {{ movie[3] }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+
+
+  </main>
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-0">© 2023 NederFilms</p>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+          <ul class="list-unstyled mb-0">
+            <li class="d-inline-block mr-3"><a href="#">Privacy Policy</a></li>
+            <li class="d-inline-block"><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+<script>// Zoek input veld
+  const searchInput = document.querySelector('#searchInput');
+
+  // Zoek functie
+  const searchMovies = () => {
+    // Alle film titels op de pagina
+    const movieTitles = document.querySelectorAll('.title');
+
+    movieTitles.forEach(title => {
+      // Als de titel overeenkomt met de zoekterm, laat dan de film zien
+      if (title.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+        title.parentElement.style.display = 'block';
+      } else {
+        title.parentElement.style.display = 'none';
+      }
+    });
+  };
+
+  // Luister naar de input van de zoekbalk
+  searchInput.addEventListener('input', searchMovies);
+</script>
+
+</html>
