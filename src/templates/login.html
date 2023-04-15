@@ -10,7 +10,6 @@
 
     <title>Login</title>
   </head>
-  <body>
     <div class="container">
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">
@@ -19,17 +18,19 @@
               <h3 class="text-center">Login</h3>
             </div>
             <div class="card-body">
-              <form method="POST">
+              <form class="popup-form" method="POST">
+                {{ form.hidden_tag() }}
                 <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                  {{ form.email.label(for='email', class_='form-label') }}
+                  {{ form.email(class_='form-control', id='email', value='', placeholder='Enter email') }}
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  {{ form.password.label(for='password', class_='form-label') }}
+                  {{ form.password(class_='form-control', id='password', value='', placeholder='Password') }}
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                  <button type="button" class="btn btn-secondary btn-block" id="cancel-btn">Annuleren</button>
+                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn', value='Submit') }}
                 </div>
               </form>
             </div>
@@ -37,6 +38,7 @@
         </div>
       </div>
     </div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
