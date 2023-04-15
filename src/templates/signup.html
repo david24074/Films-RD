@@ -20,20 +20,21 @@
             </div>
             <div class="card-body">
               <form method="POST">
+                {{ form.hidden_tag() }}
                 <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                  {{ form.email.label(for='email', class_='form-label') }}
+                  {{ form.email(class_='form-control', id='email', value='', placeholder='Enter email') }}
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  {{ form.password.label(for='password', class_='form-label') }}
+                  {{ form.password(class_='form-control', id='password', value='', placeholder='Password') }}
                 </div>
                 <div class="form-group">
-                  <label for="confirm-password">Confirm Password</label>
-                  <input type="password" class="form-control" id="confirm-password" name="confirm_password" placeholder="Confirm Password">
+                  {{ form.pass_confirm.label(for='password', class_='form-label') }}
+                  {{ form.pass_confirm(class_='form-control', id='pass_confirm', value='', placeholder='Confirm Password') }}
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn', value='Submit') }}
                 </div>
               </form>
             </div>
