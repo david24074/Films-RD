@@ -19,7 +19,9 @@
           <h1 class="mb-0">Nederlandse Films</h1>
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-end">
-          <a href="#" class="btn btn-primary">Sign In</a>
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Sign In</a>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <a href="" class="btn btn-primary">Sign Up</a>
         </div>
       </div>
     </div>
@@ -74,8 +76,8 @@
           <div class="col-md-4">
             <div class="movie">
               <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-              <h4 class="title">{{ movie.title }}</h4>
-              <p>Year: {{ movie.year_released }}</p>
+              <h4 class="title">{{ movie[1] }}</h4>
+              <p>Year: {{ movie[3] }}</p>
             </div>
           </div>
           {% endfor %}
