@@ -8,7 +8,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../static/style.css" />
 </head>
 
 <body>
@@ -69,48 +69,18 @@
         </div>
       </div>
       <div class="row mt-3" id="movieContainer">
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 1</h4>
-            <p>Year: 2021</p>
+        <div class="row">
+          {% for movie in movies %}
+          <div class="col-md-4">
+            <div class="movie">
+              <img src="https://via.placeholder.com/150x225" alt="Movie poster">
+              <h4 class="title">{{ movie.title }}</h4>
+              <p>Year: {{ movie.year_released }}</p>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 2</h4>
-            <p>Year: 2022</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 3</h4>
-            <p>Year: 2023</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 4</h4>
-            <p>Year: 2024</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 5</h4>
-            <p>Year: 2025</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="movie">
-            <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-            <h4 class="title">Movie Title 6</h4>
-            <p>Year: 2026</p>
-          </div>
-        </div>
+        
       </div>
     </div>
 
