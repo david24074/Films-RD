@@ -17,14 +17,5 @@ def login():
             login_user(user)
     return render_template('login.html', form=form)
 
-@app.route("/login-old", methods=['GET', 'POST'])
-def login_old():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user.check_password(form.password.data) and user is not None:
-            login_user(user)
-    return render_template('login_old.html', form=form)
-
 if __name__ == '__main__':
     app.run(debug=True)
