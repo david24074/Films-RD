@@ -28,7 +28,8 @@ class Movie(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    directorid = db.Column(db.Text, nullable=False)
+    directorid = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     year_released = db.Column(db.Integer, nullable=False)
 
     def __init__(self, title, directorid, year_released):
