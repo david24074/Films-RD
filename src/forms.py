@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, ValidationError
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo
 from src.models import User
 
@@ -18,3 +18,7 @@ class SignupForm(FlaskForm):
         if User.query.filter_by(email=field.data).first():
             return False
         return True
+
+class EditForm(FlaskForm):
+    description = TextAreaField('Beschrijving', validators=[DataRequired()])
+    submit = SubmitField('Aanpassen')

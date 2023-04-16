@@ -2,7 +2,7 @@ from src import app, db
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from src.models import User, Movie, Director, Actor, Role
-from src.forms import LoginForm, SignupForm
+from src.forms import LoginForm, SignupForm, EditForm
 
 @app.route('/')
 def index():
@@ -44,9 +44,18 @@ def logout():
     flash('Je bent nu uitgelogd!', 'success')
     return redirect(url_for('index'))
 
-@app.route('/movie/<id>')
+@app.route('/movie/<id>', methods=["GET", "POST"])
 def movie(id):
+    form = EditForm()
+    if form.validate_on_submit() and current_user.is_authenticated:
+        movie = Movie.query.filter_by(id=id).first()
+        movie.description = form.description.data
+        db.session.commit()
+        flash("Beschrijving geüpdate", "success")
+    
     movie = Movie.query.filter_by(id=id).first()
+    form.description.default = movie.description
+    form.process()
     if not movie:
         return redirect(url_for("index"))
     director = Director.query.filter_by(id=movie.directorid).first()
@@ -55,8 +64,7 @@ def movie(id):
     for role in roles:
         actor = Actor.query.filter_by(id=role.actor_id).first()
         actorroles.append([actor, role])
-    print(actorroles)
-    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__, actors=actorroles)
+    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__, actors=actorroles, form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
