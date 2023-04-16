@@ -19,9 +19,13 @@
           <h1 class="mb-0">NederFilms</h1>
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-end">
-          <a href="{{ url_for('login') }}" class="btn btn-primary">Sign In</a>
+          {% if current_user.is_authenticated %}
+          <a href="{{ url_for('logout') }}" class="btn btn-primary">Uitloggen</a>
+          {% else %}
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Inloggen</a>
           <span>&nbsp;&nbsp;&nbsp;</span>
-          <a href="" class="btn btn-primary">Sign Up</a>
+          <a href="{{ url_for('register') }}" class="btn btn-primary">Registreren</a>
+          {% endif %}
         </div>
       </div>
     </div>

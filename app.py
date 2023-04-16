@@ -6,7 +6,7 @@ from src.forms import LoginForm, SignupForm
 
 @app.route('/')
 def index():
-    return render_template('index.html', movies=[])
+    return render_template('index.html', movies=[], current_user=current_user)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -36,6 +36,13 @@ def register():
         flash("Account aangemaakt", "success")
         return redirect(url_for("index"))
     return render_template('signup.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Je bent nu uitgelogd!', 'success')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
