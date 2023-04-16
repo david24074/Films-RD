@@ -1,161 +1,196 @@
 body {
-	font-family: Arial, sans-serif;
-	font-size: 16px;
-	line-height: 1.5;
-	margin: 0;
-	padding: 0;
-}
-
-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 999;
-}
-
-main {
-	margin-top: 80px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-weight: bold;
-	margin-top: 0;
-}
-
-p {
-	margin-bottom: 1rem;
-}
-
-ul, ol {
-	margin-bottom: 1rem;
-}
-
-a {
-	color: #007bff;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-.card {
-	border: none;
-	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-}
-
-section {
-	padding-top: 80px;
-	padding-bottom: 80px;
-}
-
-form {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-input[type="text"] {
-	width: 100%;
-	max-width: 300px;
-}
-.bg-secondary {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;
+  }
+  
+  header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  }
+  
+  main {
+  margin-top: 80px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-top: 0;
+  }
+  
+  p {
+  margin-bottom: 1rem;
+  }
+  
+  ul, ol {
+  margin-bottom: 1rem;
+  }
+  
+  a {
+  color: #FDB813;
+  text-decoration: none;
+  }
+  
+  a:hover {
+  color: #C19A00;
+  text-decoration: underline;
+  }
+  
+  .card {
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  }
+  
+  section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  }
+  
+  form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  }
+  
+  .bg-secondary {
   background-color: #F5F5F5 !important;
-}
-
-.poster {
+  }
+  
+  .poster {
   width: 100%;
   margin-bottom: 20px;
   cursor: pointer;
-}
-/* Zoekoptie sectie */
-.search-section {
+  }
+  
+  /* Zoekoptie sectie */
+  .search-section {
   background-color: #F5F5F5;
   padding: 50px 0;
-}
-
-.search-input {
+  }
+  
+  .search-input {
   max-width: 600px;
   margin: 0 auto 30px;
   padding: 10px;
   border-radius: 25px;
   border: none;
   font-size: 20px;
-}
-
-.search-btn {
+  background-color: #FFFFFF;
+  }
+  
+  .search-btn {
   background-color: #FDB813;
-  color: #FDB813;
+  color: #FFFFFF;
   border: none;
   border-radius: 25px;
   padding: 10px 25px;
   font-size: 20px;
   cursor: pointer;
-}
-
-/* Films sectie */
-.films-section {
+  }
+  
+  /* Films sectie */
+  .films-section {
   padding: 50px 0;
-}
-
-.films-header {
+  }
+  
+  .films-header {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 50px;
-}
-
-.films-list {
+  color: #333333;
+  }
+  
+  .films-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.film-card {
+  }
+  
+  .film-card {
   width: 300px;
   margin: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.film-card img {
+  background-color: #FFFFFF;
+  }
+  
+  .film-card img {
   width: 100%;
   height: auto;
-}
-
-.film-card .film-title {
+  }
+  
+  .film-card .film-title {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 20px;
-}
-
-.film-card .film-release {
+  color: #333333;
+  }
+  
+  .film-card .film-release {
   font-size: 16px;
   text-align: center;
   margin-bottom: 10px;
-}
-#intro {
-  background-color: #f2f2f2;
+  color: #666666;
+  }
+  
+  #intro {
+  background-color: #F2F2F2;
   padding: 60px 0;
-}
-
-#intro h2 {
+  }
+  
+  #intro h2 {
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 40px;
   text-align: center;
-  color: #333;
-}
+  color: #333333;
+  }
 
-#intro p {
+  .darkbg{
+    background-color: #333333;
+  }
+  
+  #intro p {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
-  color: #666;
+  color: #666666;
   margin-bottom: 0;
   text-align: center;
+  }
+
+
+.btn-primary, .btn-outline-light {
+  background-color: #FFA500;
+  border-color: #FFA500;
 }
 
+.btn-primary:hover, .btn-outline-light:hover {
+  background-color: #FF8C00;
+  border-color: #FF8C00;
+}
+
+.card {
+  border: 1px solid #EEE;
+}
+
+.movie {
+  border: 1px solid #EEE;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #FFF;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
