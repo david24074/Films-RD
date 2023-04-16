@@ -57,19 +57,17 @@
       <div class="container">
         <h2 class="mb-4">Top Movies</h2>
         <div class="row">
-          {% for movie in movies[:3] %}
+          {% for movie in movies[::-1][:3] %}
           <div class="col-md-4 mb-4">
             <div class="card">
-              <img src="https://via.placeholder.com/300x450" alt="Movie Poster" class="card-img-top">
+              <img src="{{ movie['posterurl'] }}" alt="Movie Poster" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title mb-0">{{ movie[1] }}</h5>
-                <p class="card-text">Director: {{ movie[2] }}</p>
-                <p class="card-text">Year released: {{ movie[3] }}</p>
+                <h5 class="card-title mb-0">{{ movie['title'] }}</h5>
+                <p class="card-text">Jaar uitgebracht: {{ movie['year_released'] }}</p>
               </div>
             </div>
           </div>
           {% endfor %}
-
         </div>
       </div>
     </section>
@@ -78,8 +76,7 @@
       <div class="row">
         <div class="col-md-12 bg-secondary">
           <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="searchInput">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" onclick="searchMovies()">Search</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Zoek" aria-label="Zoek" id="searchInput">
           </form>
         </div>
       </div>
@@ -88,14 +85,13 @@
           {% for movie in movies %}
           <div class="col-md-4">
             <div class="movie">
-              <img src="https://via.placeholder.com/150x225" alt="Movie poster">
-              <h4 class="title">{{ movie[1] }}</h4>
-              <p>Year: {{ movie[3] }}</p>
+              <img src="{{ movie['posterurl'] }}" alt="Movie poster">
+              <h4 class="title">{{ movie['title'] }}</h4>
+              <p>Jaar: {{ movie['year_released'] }}</p>
             </div>
           </div>
           {% endfor %}
         </div>
-        
       </div>
     </div>
 
