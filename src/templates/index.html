@@ -55,7 +55,7 @@
 
     <section class="py-5 bg-light">
       <div class="container">
-        <h2 class="mb-4">Top Movies</h2>
+        <h2 class="mb-4">Laatste Films</h2>
         <div class="row">
           {% for movie in movies[::-1][:3] %}
           <div class="col-md-4 mb-4">
@@ -124,25 +124,26 @@
 </body>
 
 <script>// Zoek input veld
-  const searchInput = document.querySelector('#searchInput');
+ const searchInput = document.querySelector('#searchInput');
 
-  // Zoek functie
-  const searchMovies = () => {
-    // Alle film titels op de pagina
-    const movieTitles = document.querySelectorAll('.title');
+// Zoek functie
+const searchMovies = () => {
+  // Alle film titels op de pagina
+  const movieTitles = document.querySelectorAll('.title');
 
-    movieTitles.forEach(title => {
-      // Als de titel overeenkomt met de zoekterm, laat dan de film zien
-      if (title.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
-        title.parentElement.style.display = 'block';
-      } else {
-        title.parentElement.style.display = 'none';
-      }
-    });
-  };
+  movieTitles.forEach(title => {
+    // Als de titel overeenkomt met de zoekterm, laat dan de film zien
+    if (title.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+      title.parentElement.classList.remove('hidden');
+    } else {
+      title.parentElement.classList.add('hidden');
+    }
+  });
+};
 
-  // Luister naar de input van de zoekbalk
-  searchInput.addEventListener('input', searchMovies);
+// Luister naar de input van de zoekbalk
+searchInput.addEventListener('input', searchMovies);
+
 </script>
 
 </html>
