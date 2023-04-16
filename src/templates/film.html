@@ -1,131 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film Pagina</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/filmstyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Pagina</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/filmstyle.css">
 </head>
+
 <body>
-    <!-- Navbar -->
-    <header class="bg-dark text-white py-2">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 class="mb-0">NederFilms</h1>
-            </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-end">
-                {% if current_user.is_authenticated %}
-                <a href="{{ url_for('logout') }}" class="btn btn-primary">Uitloggen</a>
-                {% else %}
-                <a href="{{ url_for('login') }}" class="btn btn-primary">Inloggen</a>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="{{ url_for('register') }}" class="btn btn-primary">Registreren</a>
-                {% endif %}
-            </div>
-          </div>
+  <!-- Navbar -->
+  <header class="bg-dark text-white py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="{{ url_for('index') }}">
+            <h1 class="mb-0">NederFilms</h1>
+          </a>
         </div>
-      </header>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                {% if category == "message" %}
-                <div class="alert alert-warning alerts" role="alert">
-                    {{ message }}
-                </div>
-                {% else %}
-                <div class="alert alert-{{ category }} alerts" role="alert">
-                    {{ message }}
-                </div>
-                {% endif %}
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="{{movie['posterurl']}}" alt="Movie Poster" class="img-fluid">
-                </div>
-                <div class="col-md-8">
-                    <h1 class="display-4">{{movie['title']}}</h1>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="h5">Jaar: {{movie['year_released']}}</p>
-                        <p class="h5">Regisseur: {{director['first_name']}} {{director['last_name']}}</p>
-                    </div>
-                    <br>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{movie['trailerurl']}}"></iframe>
-                    </div>
-                    <br>
-                    <p>{{movie['description']}}</p>
-                    {% if current_user.is_authenticated %}
-                    <a id="openPopup" href="#" class="btn btn-primary">Aanpassen</a>
-                    {% endif %}
-                </div>
-            </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+          {% if current_user.is_authenticated %}
+          <a href="{{ url_for('logout') }}" class="btn btn-primary">Uitloggen</a>
+          {% else %}
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Inloggen</a>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <a href="{{ url_for('register') }}" class="btn btn-primary">Registreren</a>
+          {% endif %}
         </div>
-    </header>
-    <section class="container my-5">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="text-center mb-4">Acteurs</h2>
-            <div class="card">
-              <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Naam</th>
-                      <th>Rol</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for actor in actors %}
-                    <tr>
-                      <td>{{ actor[0]['first_name'] }} {{ actor[0]['last_name'] }}</td>
-                      <td>{{ actor[1]['character_name'] }}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="popup" id="userPopup">
-        <div class="popup-content">
-            <h2 class="popup-title">Beschrijving aanpassen</h2>
-            <form class="popup-form" method="POST">
-                {{ form.hidden_tag() }}
-                <div class="mb-3">
-                    {{ form.description.label(for='description', class_='form-label') }}
-                    {{ form.description(class_='form-control popup-textarea', id='description') }}
-                </div>
-                <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-secondary btn-lg" id="cancel-btn">Annuleren</button>
-                    {{ form.submit(class_='btn btn-primary btn-lg', id='add-user-btn') }}
-                </div>
-            </form>
-        </div>
+      </div>
     </div>
+  </header>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      {% if category == "message" %}
+      <div class="alert alert-warning alerts" role="alert">
+        {{ message }}
+      </div>
+      {% else %}
+      <div class="alert alert-{{ category }} alerts" role="alert">
+        {{ message }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{movie['posterurl']}}" alt="Movie Poster" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+          <h1 class="display-4">{{movie['title']}}</h1>
+          <hr class="my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="h5">Jaar: {{movie['year_released']}}</p>
+            <p class="h5">Regisseur: {{director['first_name']}} {{director['last_name']}}</p>
+          </div>
+          <br>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{movie['trailerurl']}}"></iframe>
+          </div>
+          <br>
+          <p>{{movie['description']}}</p>
+          {% if current_user.is_authenticated %}
+          <a id="openPopup" href="#" class="btn btn-primary">Aanpassen</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center mb-4">Acteurs</h2>
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Naam</th>
+                  <th>Rol</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for actor in actors %}
+                <tr>
+                  <td>{{ actor[0]['first_name'] }} {{ actor[0]['last_name'] }}</td>
+                  <td>{{ actor[1]['character_name'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="popup" id="userPopup">
+    <div class="popup-content">
+      <h2 class="popup-title">Beschrijving aanpassen</h2>
+      <form class="popup-form" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.description.label(for='description', class_='form-label') }}
+          {{ form.description(class_='form-control popup-textarea', id='description') }}
+        </div>
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-secondary btn-lg" id="cancel-btn">Annuleren</button>
+          {{ form.submit(class_='btn btn-primary btn-lg', id='add-user-btn') }}
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 <script>
-    const openPopupBtn = document.querySelector('#openPopup');
-    const popup = document.querySelector('#userPopup');
-    const closePopupBtn = document.querySelector('#cancel-btn');
+  const openPopupBtn = document.querySelector('#openPopup');
+  const popup = document.querySelector('#userPopup');
+  const closePopupBtn = document.querySelector('#cancel-btn');
 
-    openPopupBtn.addEventListener('click', () => {
-        popup.style.display = 'flex';
-    });
+  openPopupBtn.addEventListener('click', () => {
+    popup.style.display = 'flex';
+  });
 
-    closePopupBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
+  closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
 </script>
-</html>
 
+</html>
