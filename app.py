@@ -13,21 +13,28 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():# If the validation fails there is no error
         user = User.query.filter_by(email=form.email.data).first()
-        if user.check_password(form.password.data) and user is not None:
-            login_user(user)# There is no message to tell the user that they're logged in
+        if user is not None and user.check_password(form.password.data):
+            login_user(user)
+            flash("Je bent nu ingelogd", "success")
+            return redirect(url_for("index"))
+        else:
+            flash("Er bestaat geen account met deze inlog gegevens", "danger")
+
     return render_template('login.html', form=form)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def register():
     form = SignupForm()
-    if form.validate_on_submit():# If the validation fails there is no error
+    if form.validate_on_submit():
         if not form.validate_email(form.email):
-            # Replace this with something that sends a message
-            return "TEMP"
+            flash("Er bestaat al een gebruiker met dit email addres", "danger")
+            return render_template('signup.html', form=form)
         user = User(form.email.data, form.password.data)
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        flash("Account aangemaakt", "success")
+        return redirect(url_for("index"))
     return render_template('signup.html', form=form)
 
 if __name__ == '__main__':

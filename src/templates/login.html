@@ -7,10 +7,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/authentication.css">
 
     <title>Login</title>
   </head>
     <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alerts" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">
           <div class="card">
@@ -22,15 +32,14 @@
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                   {{ form.email.label(for='email', class_='form-label') }}
-                  {{ form.email(class_='form-control', id='email', value='', placeholder='Enter email') }}
+                  {{ form.email(class_='form-control', id='email', value='', placeholder='Email') }}
                 </div>
                 <div class="form-group">
                   {{ form.password.label(for='password', class_='form-label') }}
-                  {{ form.password(class_='form-control', id='password', value='', placeholder='Password') }}
+                  {{ form.password(class_='form-control', id='password', value='', placeholder='Wachtwoord') }}
                 </div>
                 <div class="form-group">
-                  <button type="button" class="btn btn-secondary btn-block" id="cancel-btn">Annuleren</button>
-                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn', value='Submit') }}
+                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn') }}
                 </div>
               </form>
             </div>
