@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/300x450.png?text=Movie+Poster" alt="Movie Poster" class="img-fluid">
+                    <img src="{{movie['posterurl']}}" alt="Movie Poster" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <h1 class="display-4">{{movie['title']}}</h1>
@@ -44,7 +44,7 @@
                     </div>
                     <br>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+                        <iframe class="embed-responsive-item" src="{{movie['trailerurl']}}"></iframe>
                     </div>
                     <br>
                     <p>{{movie['description']}}</p>
