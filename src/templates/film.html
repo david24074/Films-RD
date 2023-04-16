@@ -71,8 +71,8 @@
                   <tbody>
                     {% for actor in actors %}
                     <tr>
-                      <td>{{ actor['first_name'] }} {{ actor['last_name'] }}</td>
-                      <td>{{ actor['role'] }}</td>
+                      <td>{{ actor[0]['first_name'] }} {{ actor[0]['last_name'] }}</td>
+                      <td>{{ actor[1]['character_name'] }}</td>
                     </tr>
                     {% endfor %}
                   </tbody>

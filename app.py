@@ -1,7 +1,7 @@
 from src import app, db
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from src.models import User, Movie, Director, Actor
+from src.models import User, Movie, Director, Actor, Role
 from src.forms import LoginForm, SignupForm
 
 @app.route('/')
@@ -50,8 +50,13 @@ def movie(id):
     if not movie:
         return redirect(url_for("index"))
     director = Director.query.filter_by(id=movie.directorid).first()
-    actors = Actor.query.filter_by(id=movie.directorid)
-    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__, actors=actors.__dict__)
+    roles = Role.query.filter_by(movie_id=id).all()
+    actorroles = []
+    for role in roles:
+        actor = Actor.query.filter_by(id=role.actor_id).first()
+        actorroles.append([actor, role])
+    print(actorroles)
+    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__, actors=actorroles)
 
 if __name__ == '__main__':
     app.run(debug=True)
