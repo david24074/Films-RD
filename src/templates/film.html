@@ -6,32 +6,24 @@
     <title>Film Pagina</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/st.css">
+    <link rel="stylesheet" href="../static/filmstyle.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Film Titel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Over</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
+    <header class="bg-dark text-white py-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 class="mb-0">NederFilms</h1>
             </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+              <a href="{{ url_for('login') }}" class="btn btn-primary">Sign In</a>
+              <span>&nbsp;&nbsp;&nbsp;</span>
+              <a href="" class="btn btn-primary">Sign Up</a>
+            </div>
+          </div>
         </div>
-    </nav>
-
+      </header>
     <!-- Header -->
     <header>
         <div class="container">
