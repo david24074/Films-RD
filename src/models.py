@@ -31,11 +31,15 @@ class Movie(db.Model):
     directorid = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     year_released = db.Column(db.Integer, nullable=False)
+    trailerurl = db.Column(db.Text, nullable=False)
+    posterurl = db.Column(db.Text, nullable=False)
 
-    def __init__(self, title, directorid, year_released):
+    def __init__(self, title, directorid, year_released, trailerurl, posterurl):
         self.title = title
         self.directorid = directorid
         self.year_released = year_released
+        self.trailerurl = trailerurl
+        self.posterurl = posterurl
 
     def __repr__(self):
         return f"Movie with id {self.id} and is called {self.title} was directed by {self.directorid} and came out in {self.year_released}"
