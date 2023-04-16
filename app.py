@@ -50,8 +50,8 @@ def movie(id):
     if not movie:
         return redirect(url_for("index"))
     director = Director.query.filter_by(id=movie.directorid).first()
-    actors = Actor.query.filter_by(id=movie.directorid).first()
-    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__)
+    actors = Actor.query.filter_by(id=movie.directorid)
+    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__, actors=actors.__dict__)
 
 if __name__ == '__main__':
     app.run(debug=True)
