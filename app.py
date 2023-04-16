@@ -46,6 +46,10 @@ def logout():
 
 @app.route('/movie/<id>', methods=["GET", "POST"])
 def movie(id):
+    movie = Movie.query.filter_by(id=id).first()
+    if not movie:
+        return redirect(url_for("index"))
+
     form = EditForm()
     if form.validate_on_submit() and current_user.is_authenticated:
         movie = Movie.query.filter_by(id=id).first()
@@ -53,11 +57,8 @@ def movie(id):
         db.session.commit()
         flash("Beschrijving geüpdate", "success")
     
-    movie = Movie.query.filter_by(id=id).first()
     form.description.default = movie.description
     form.process()
-    if not movie:
-        return redirect(url_for("index"))
     director = Director.query.filter_by(id=movie.directorid).first()
     roles = Role.query.filter_by(movie_id=id).all()
     actorroles = []
