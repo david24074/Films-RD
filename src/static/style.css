@@ -178,6 +178,10 @@ body {
   border-color: #FFA500;
 }
 
+.alerts {
+  margin-top: 3%;
+}
+
 .btn-primary:hover, .btn-outline-light:hover {
   background-color: #FF8C00;
   border-color: #FF8C00;
