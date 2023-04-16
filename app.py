@@ -1,7 +1,7 @@
 from src import app, db
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from src.models import User
+from src.models import User, Movie, Director, Actor
 from src.forms import LoginForm, SignupForm
 
 @app.route('/')
@@ -43,6 +43,15 @@ def logout():
     logout_user()
     flash('Je bent nu uitgelogd!', 'success')
     return redirect(url_for('index'))
+
+@app.route('/movie/<id>')
+def movie(id):
+    movie = Movie.query.filter_by(id=id).first()
+    if not movie:
+        return redirect(url_for("index"))
+    director = Director.query.filter_by(id=movie.directorid).first()
+    actors = Actor.query.filter_by(id=movie.directorid).first()
+    return render_template('film.html', current_user=current_user, movie=movie.__dict__, director=director.__dict__)
 
 if __name__ == '__main__':
     app.run(debug=True)
