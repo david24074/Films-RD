@@ -43,11 +43,11 @@
         </div>
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alerts" role="alert">
-              {{ message }}
-            </div>
-          {% endfor %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alerts" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
         {% endwith %}
       </div>
@@ -60,7 +60,9 @@
           {% for movie in movies[::-1][:3] %}
           <div class="col-md-4 mb-4">
             <div class="card">
-              <img src="{{ movie['posterurl'] }}" alt="Movie Poster" class="card-img-top">
+              <a href="movie/{{ movie['id'] }}">
+                <img src="{{ movie['posterurl'] }}" alt="Movie Poster" class="card-img-top">
+              </a>
               <div class="card-body">
                 <h5 class="card-title mb-0">{{ movie['title'] }}</h5>
                 <p class="card-text">Jaar uitgebracht: {{ movie['year_released'] }}</p>
@@ -85,7 +87,9 @@
           {% for movie in movies %}
           <div class="col-md-4">
             <div class="movie">
-              <img src="{{ movie['posterurl'] }}" alt="Movie poster">
+              <a href="movie/{{ movie['id'] }}">
+                <img src="{{ movie['posterurl'] }}" alt="Movie Poster" class="card-img-top">
+              </a>
               <h4 class="title">{{ movie['title'] }}</h4>
               <p>Jaar: {{ movie['year_released'] }}</p>
             </div>
@@ -124,25 +128,25 @@
 </body>
 
 <script>// Zoek input veld
- const searchInput = document.querySelector('#searchInput');
+  const searchInput = document.querySelector('#searchInput');
 
-// Zoek functie
-const searchMovies = () => {
-  // Alle film titels op de pagina
-  const movieTitles = document.querySelectorAll('.title');
+  // Zoek functie
+  const searchMovies = () => {
+    // Alle film titels op de pagina
+    const movieTitles = document.querySelectorAll('.title');
 
-  movieTitles.forEach(title => {
-    // Als de titel overeenkomt met de zoekterm, laat dan de film zien
-    if (title.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
-      title.parentElement.classList.remove('hidden');
-    } else {
-      title.parentElement.classList.add('hidden');
-    }
-  });
-};
+    movieTitles.forEach(title => {
+      // Als de titel overeenkomt met de zoekterm, laat dan de film zien
+      if (title.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+        title.parentElement.classList.remove('hidden');
+      } else {
+        title.parentElement.classList.add('hidden');
+      }
+    });
+  };
 
-// Luister naar de input van de zoekbalk
-searchInput.addEventListener('input', searchMovies);
+  // Luister naar de input van de zoekbalk
+  searchInput.addEventListener('input', searchMovies);
 
 </script>
 
