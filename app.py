@@ -6,7 +6,7 @@ from src.forms import LoginForm, SignupForm
 
 @app.route('/')
 def index():
-    return render_template('index.html', movies=[], current_user=current_user)
+    return render_template('index.html', movies=Movie.query.all(), current_user=current_user)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
