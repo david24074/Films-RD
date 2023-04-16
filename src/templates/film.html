@@ -31,6 +31,21 @@
     <!-- Header -->
     <header>
         <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                {% if category == "message" %}
+                <div class="alert alert-warning alerts" role="alert">
+                    {{ message }}
+                </div>
+                {% else %}
+                <div class="alert alert-{{ category }} alerts" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{movie['posterurl']}}" alt="Movie Poster" class="img-fluid">
@@ -49,7 +64,7 @@
                     <br>
                     <p>{{movie['description']}}</p>
                     {% if current_user.is_authenticated %}
-                    <a href="#" class="btn btn-primary">Aanpassen</a>
+                    <a id="openPopup" href="#" class="btn btn-primary">Aanpassen</a>
                     {% endif %}
                 </div>
             </div>
@@ -82,7 +97,35 @@
           </div>
         </div>
       </section>
-      
+      <div class="popup" id="userPopup">
+        <div class="popup-content">
+            <h2 class="popup-title">Beschrijving aanpassen</h2>
+            <form class="popup-form" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.description.label(for='description', class_='form-label') }}
+                    {{ form.description(class_='form-control popup-textarea', id='description') }}
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-secondary btn-lg" id="cancel-btn">Annuleren</button>
+                    {{ form.submit(class_='btn btn-primary btn-lg', id='add-user-btn') }}
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+<script>
+    const openPopupBtn = document.querySelector('#openPopup');
+    const popup = document.querySelector('#userPopup');
+    const closePopupBtn = document.querySelector('#cancel-btn');
+
+    openPopupBtn.addEventListener('click', () => {
+        popup.style.display = 'flex';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+</script>
 </html>
 
