@@ -27,25 +27,25 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <h3 class="text-center">Signup</h3>
+              <h3 class="text-center">Registeren</h3>
             </div>
             <div class="card-body">
               <form method="POST">
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                   {{ form.email.label(for='email', class_='form-label') }}
-                  {{ form.email(class_='form-control', id='email', value='', placeholder='Enter email') }}
+                  {{ form.email(class_='form-control', id='email', value='', placeholder='Email') }}
                 </div>
                 <div class="form-group">
                   {{ form.password.label(for='password', class_='form-label') }}
-                  {{ form.password(class_='form-control', id='password', value='', placeholder='Password') }}
+                  {{ form.password(class_='form-control', id='password', value='', placeholder='Wachtwoord') }}
                 </div>
                 <div class="form-group">
                   {{ form.pass_confirm.label(for='password', class_='form-label') }}
-                  {{ form.pass_confirm(class_='form-control', id='pass_confirm', value='', placeholder='Confirm Password') }}
+                  {{ form.pass_confirm(class_='form-control', id='pass_confirm', value='', placeholder='Wachtwoord verifiëren') }}
                 </div>
                 <div class="form-group">
-                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn', value='Submit') }}
+                  {{ form.submit(class_='btn btn-primary btn-block', id='add-user-btn', value='Registreren') }}
                 </div>
               </form>
             </div>

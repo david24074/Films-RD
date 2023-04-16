@@ -9,10 +9,10 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Inloggen')
 
 class SignupForm(FlaskForm):
-    email = StringField('Email address', validators=[DataRequired(),Email()])
-    password = PasswordField('Password', validators=[DataRequired(), EqualTo('pass_confirm', message='Passwords don\'t match!')])
-    pass_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
-    submit = SubmitField('Signup')
+    email = StringField('Email', validators=[DataRequired(),Email()])
+    password = PasswordField('Wachtwoord', validators=[DataRequired(), EqualTo('pass_confirm', message='Passwords don\'t match!')])
+    pass_confirm = PasswordField('Wachtwoord verifiëren', validators=[DataRequired()])
+    submit = SubmitField('Registreren')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
